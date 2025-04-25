@@ -8,12 +8,14 @@ The materials contain marked-up corpora of texts in the subject area of Computat
 The [terms](./terms/) folder contains a dataset with expert markup of subject area terms in BIO notation: a B (beginning) label is placed to indicate the beginning of the term, I (inside) is placed to indicate a token – the continuation of the term, and O (outside) is any word outside the term. The corpus is used to train ruRoBERTa to extract subject domain terms.
 
 ### Dataset with markup of terms, their classes and relations
-The [ents](./ents/) folder contains a corpus of texts, manually annotated by experts, with the following information:
+The [ents](./ents/) folder contains two corpora with the expert markup:
+1. The data in the [ents/sent](./ents/sent/) subfolder contains the markup of subject area terms in BIO notation added by labels of the classes of terms; each sentence is supported with the list of relations found in it.
+2. The data in the [ents/doc](./ents/doc/) subfolder contains the markup in JSON with the following information:
 * text fragments;
 * terms contained in each fragment;
-* start and end position of each term (ordinal numbers of the first and last characters);
 * the class of each term;
 * relations between terms for each class.
+File [article-dataset.json](./ents/doc/articles_dataset.json) also contains information about the start position of each term (index of the first character; ).
 The dataset is used to conduct experiments with LLM to extract terms and relations.
 
 Seventeen classes were used in the markup:
@@ -59,7 +61,7 @@ The following relationships between the terms were labelled:
 
 ### Datasets with markup of coreference relations
 The [coref](./coref/) folder contains files with fragments of articles, in which the words and phrases denoting concepts of the subject area and being in coreferential relations are marked. Coreferent terms are combined into arrays, and the terms themselves are labelled with ordinal numbers of initial and final symbols.
-The markup was done manually by the expert; the files were generated using the CorefMarkup program.
+The markup was done manually by the expert; the files were generated using the CorefMarkup program. The program, and data format description could be found in RuCoCo repository: https://github.com/vdobrovolskii/rucoco/tree/master
 
 ## See also:
 Sidorova E., Ivanov A., Ovchinnikova K. Information extraction from texts based on ontology and large language models [In Russian] // Ontology of designing. 2025. — Vol. 15, no. 1. — P. 114–129. — https://doi.org/10.18287/2223-9537-2025-15-1-114-129
